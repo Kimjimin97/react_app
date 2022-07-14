@@ -1,18 +1,36 @@
 import { Link } from "react-router-dom";
-import default_img from "../img/default_img.jpg";
+import styles from "./Movie.module.css";
+import starImg from "../img/Vector.png";
 
-function Movie({ id, coverImg, title, summary, genres }) {
+function Movie({ id, coverImg, title, summary, genres, rating }) {
   const handelError = (e) => {
     e.target.style.display = "none";
   };
   return (
     <div>
-      {/* <img src={default_img} /> */}
-      <h2>
-        <Link to={`/movie/${id}`}>
-          <img src={coverImg} onError={handelError} />
-        </Link>
-      </h2>
+      <Link to={`/movie/${id}`}>
+        <div className={styles.movieCard}>
+          <div className={styles.imgeArea}>
+            <img
+              className={styles.movieImg}
+              src={coverImg}
+              onError={handelError}
+            />
+            <div className={styles.typoArea}>
+              <div className={styles.starAndTitle}>
+                <div className={styles.titleBox}>{title}</div>
+                <div className={styles.starBox}>
+                  <img className={styles.starImg} src={starImg} />
+                  <div className={styles.ratingStyle}>
+                    {console.log(rating)}
+                  </div>
+                </div>
+              </div>
+              <div className={styles.typeBox}>{genres[0]}</div>
+            </div>
+          </div>
+        </div>
+      </Link>
     </div>
   );
 }

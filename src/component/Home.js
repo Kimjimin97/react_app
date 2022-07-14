@@ -10,11 +10,14 @@ function Home() {
     if (moveIndex === 0) {
       return;
     }
-    setMoveIndex((prev) => prev + 10);
+    setMoveIndex((prev) => prev + 150);
   };
 
   const rightMove = () => {
-    setMoveIndex((prev) => prev - 10);
+    if (moveIndex <= -3500) {
+      return;
+    }
+    setMoveIndex((prev) => prev - 150);
   };
   const getMovies = async () => {
     const json = await (
@@ -29,19 +32,20 @@ function Home() {
   useEffect(() => {
     getMovies();
   }, []);
-  console.log(moveIndex);
+  console.log(movieData);
   return (
-    <div>
+    <div className={styles.body}>
       {loading ? (
         <h1>loading</h1>
       ) : (
         <div>
+          <div className={styles.backBlack}></div>
           <button onClick={leftMove}>left</button>
           <button onClick={rightMove}>right</button>
 
           <div
             className={styles.moviesContainer}
-            style={{ transform: `translateX(${moveIndex}%)` }}
+            style={{ transform: `translateX(${moveIndex}px)` }}
           >
             {movieData.map((movie) => (
               <div className={styles.transform}>
@@ -52,6 +56,7 @@ function Home() {
                   title={movie.title}
                   summary={movie.summary}
                   genres={movie.genres}
+                  scores={movie.scores}
                 />
               </div>
             ))}
