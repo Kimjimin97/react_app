@@ -1,0 +1,8 @@
+.moviesContainer {
+  display: flex;
+  overflow: visible;
+}
+
+.moviesContainer::-webkit-scrollbar {
+  display: none;
+}
