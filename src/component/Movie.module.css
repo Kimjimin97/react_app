@@ -19,15 +19,18 @@
 }
 
 .movieCard:hover .typoArea {
-  height: 70px;
+  height: 85px;
 }
 
 .movieCard:hover .typeBox {
   opacity: 1;
-  overflow: none;
 }
 .movieCard:hover .starImg {
   opacity: 1;
+}
+
+.movieCard:hover .ratingStyle {
+  opacity: 0.9;
 }
 .typoArea {
   position: absolute;
@@ -58,12 +61,16 @@
   white-space: nowrap;
 }
 
+.ratingStyle {
+  color: #ff9f29;
+  font-size: 12px;
+  opacity: 0;
+  transition: all 0.3s linear;
+  text-align: center;
+}
 .starImg {
   opacity: 0;
   transition: all 0.3s linear;
-}
-.ratingStyle {
-  color: FF9F29;
 }
 
 .typeBox {

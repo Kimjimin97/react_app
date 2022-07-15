@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import styles from "./Movie.module.css";
+import styles from "../component/Movie.module.css";
 import starImg from "../img/Vector.png";
 
-function Movie({ id, coverImg, title, summary, genres, rating }) {
+function Movie({ id, coverImg, title, summary, genres, star }) {
   const handelError = (e) => {
-    e.target.style.display = "none";
+    e.target.parentNode.parentNode.style.display = "none";
   };
   return (
     <div>
@@ -21,9 +21,7 @@ function Movie({ id, coverImg, title, summary, genres, rating }) {
                 <div className={styles.titleBox}>{title}</div>
                 <div className={styles.starBox}>
                   <img className={styles.starImg} src={starImg} />
-                  <div className={styles.ratingStyle}>
-                    {console.log(rating)}
-                  </div>
+                  <div className={styles.ratingStyle}>{star}</div>
                 </div>
               </div>
               <div className={styles.typeBox}>{genres[0]}</div>
