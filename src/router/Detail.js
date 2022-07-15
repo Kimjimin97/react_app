@@ -15,7 +15,7 @@ function Detail() {
   useEffect(() => {
     getMovie();
   }, []);
-  console.log(detailMovie.rating);
+
   return (
     <DetailPaint
       summary={detailMovie.description_full}

@@ -1,47 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import styles from "./detailPaint.module.css";
-import starZero from "../img/zeroStar.png";
-import starOne from "../img/oneStar.png";
-import starTwo from "../img/twoStar.png";
-import starThree from "../img/threeStar.png";
-import starFour from "../img/fourStar.png";
-import starFive from "../img/fiveStar.png";
+import StarZero from "../img/zeroStar.png";
+import StarOne from "../img/oneStar.png";
+import StarTwo from "../img/twoStar.png";
+import StarThree from "../img/threeStar.png";
+import StarFour from "../img/fourStar.png";
+import StarFive from "../img/fiveStar.png";
 
 function DetailPaint({ summary, coverImg, title, star }) {
-  const [starImgSrc, setStarImg] = useState("");
-
-  const getIfStar = () => {
+  const getIfStar = (star) => {
     if (star < 1) {
-      setStarImg(starZero);
-    } else if (star < 2) {
-      setStarImg(starOne);
+      return StarZero;
     } else if (star < 3) {
-      setStarImg(starTwo);
-    } else if (star < 4) {
-      setStarImg(starThree);
+      return;
     } else if (star < 5) {
-      setStarImg(starFour);
-    } else if (star == 5) {
-      setStarImg(starFive);
+      return StarTwo;
+    } else if (star < 7) {
+      return StarThree;
+    } else if (star < 8) {
+      return StarFour;
+    } else if (star <= 10) {
+      return StarFive;
     }
   };
 
-  useEffect(() => {
-    getIfStar();
-  }, []);
-
-  console.log(starImgSrc);
+  const starImgSrc = useMemo(() => getIfStar(star), [star]);
   return (
-    <div>
-      <div className={styles.blackBox}>
-        <div className={styles.contentBox}>
-          <div className={styles.leftContent}>
-            <div className={styles.titleStyle}>{title}</div>
-            <img className={styles.starStyle} src={starImgSrc} />
-            <div className={styles.textStyle}>{summary}</div>
-          </div>
-          <img className={styles.rightContent} src={coverImg} />
+    <div className={styles.blackBox}>
+      <div className={styles.contentBox}>
+        <div className={styles.leftContent}>
+          <div className={styles.titleStyle}>{title}</div>
+          <img
+            src={starImgSrc}
+            className={styles.starStyle}
+            alt={"posterimge"}
+          />
+
+          <div className={styles.textStyle}>{summary}</div>
         </div>
+        <img src={coverImg} className={styles.rightContent} />
       </div>
     </div>
   );
