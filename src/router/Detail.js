@@ -10,6 +10,7 @@ function Detail() {
       await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)
     ).json();
     setDetailMovie(json.data.movie);
+    console.log(1);
   };
 
   useEffect(() => {
@@ -18,7 +19,7 @@ function Detail() {
 
   return (
     <DetailPaint
-      summary={detailMovie.description_full}
+      summary={detailMovie.description_intro}
       coverImg={detailMovie.medium_cover_image}
       title={detailMovie.title}
       star={detailMovie.rating}

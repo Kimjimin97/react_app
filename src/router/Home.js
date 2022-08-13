@@ -32,6 +32,7 @@ function Home() {
     setLoading(false);
   };
 
+  // ## component가 처음 render할 때 실행되고 다시는 실행되지 않을 function을 넣어준다.
   useEffect(() => {
     getMovies();
   }, []);
@@ -39,7 +40,7 @@ function Home() {
   return (
     <div>
       {loading ? (
-        <h1>loading..</h1>
+        <h1 className={loading}>Loading...</h1>
       ) : (
         <div>
           <div id={styles.title}>JMOVIE</div>

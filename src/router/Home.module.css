@@ -8,7 +8,11 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
-
+.loading {
+  display: block;
+  width: auto;
+  height: auto;
+}
 #title {
   position: absolute;
   width: 150px;
